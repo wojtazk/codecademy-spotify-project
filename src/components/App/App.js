@@ -55,13 +55,19 @@ function App() {
     // TODO: pass playlist name and track to spotify linked method
   };
 
+  const search = (search) => {
+    console.log(search);
+
+    // TODO: hook up to spotify api
+  };
+
   return (
     <div>
       <h1>
         Ja<span className="highlight">mmm</span>ing
       </h1>
       <div className="App">
-        <SearchBar />
+        <SearchBar onSearch={search} />
         <div className="App-playlist">
           <SearchResults searchResults={searchResults} onAdd={addTrack} />
           <Playlist
