@@ -5,7 +5,6 @@ import { TrackList } from '../TrackList/TrackList';
 export const Playlist = ({ name, onNameChange, tracks, onRemove, onSave }) => {
   const handleNameChange = (event) => {
     onNameChange(event.target.value);
-    console.log(name);
   };
 
   return (
