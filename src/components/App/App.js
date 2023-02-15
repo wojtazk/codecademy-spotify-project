@@ -29,7 +29,13 @@ function App() {
   const addTrack = (track) => {
     const isNew = !playlistTracks.some((tr) => tr.id === track.id);
 
-    if (isNew) setPlaylistTracks((oldPLaylist) => [...oldPLaylist, track]);
+    if (isNew) setPlaylistTracks((prevTracks) => [...prevTracks, track]);
+  };
+
+  const removeTrack = (track) => {
+    setPlaylistTracks((oldTracks) =>
+      oldTracks.filter((tr) => tr.id !== track.id)
+    );
   };
 
   return (
@@ -41,7 +47,11 @@ function App() {
         <SearchBar />
         <div className="App-playlist">
           <SearchResults searchResults={searchResults} onAdd={addTrack} />
-          <Playlist name={playlistName} tracks={playlistTracks} />
+          <Playlist
+            name={playlistName}
+            tracks={playlistTracks}
+            onRemove={removeTrack}
+          />
         </div>
       </div>
     </div>
