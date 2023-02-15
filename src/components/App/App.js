@@ -26,6 +26,12 @@ function App() {
     },
   ]);
 
+  const addTrack = (track) => {
+    const isNew = !playlistTracks.some((tr) => tr.id === track.id);
+
+    if (isNew) setPlaylistTracks((oldPLaylist) => [...oldPLaylist, track]);
+  };
+
   return (
     <div>
       <h1>
@@ -34,7 +40,7 @@ function App() {
       <div className="App">
         <SearchBar />
         <div className="App-playlist">
-          <SearchResults searchResults={searchResults} />
+          <SearchResults searchResults={searchResults} onAdd={addTrack} />
           <Playlist name={playlistName} tracks={playlistTracks} />
         </div>
       </div>

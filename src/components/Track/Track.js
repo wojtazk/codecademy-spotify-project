@@ -1,14 +1,20 @@
 import React from 'react';
 import './Track.css';
 
-export const Track = (props) => {
+export const Track = ({ track, isRemoval, onAdd }) => {
+  const addTrack = () => {
+    onAdd(track);
+  };
+
   return (
     <div className="Track">
       <div className="Track-information">
-        <h3>{props.name}</h3>
-        <p>{`${props.artist} | ${props.album}`}</p>
+        <h3>{track.name}</h3>
+        <p>{`${track.artist} | ${track.album}`}</p>
       </div>
-      <button className="Track-action">{props.isRemoval ? '-' : '+'}</button>
+      <button className="Track-action" onClick={isRemoval ? null : addTrack}>
+        {isRemoval ? '-' : '+'}
+      </button>
     </div>
   );
 };
