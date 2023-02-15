@@ -17,9 +17,16 @@ function App() {
 
   const [playlistName, setPlaylistName] = useState('');
   const [playlistTracks, setPlaylistTracks] = useState([
-    { id: 12, name: 'Playlist track 1', artist: 'artist 1', album: 'album 1' },
+    {
+      id: 12,
+      uri: '12',
+      name: 'Playlist track 1',
+      artist: 'artist 1',
+      album: 'album 1',
+    },
     {
       id: 24,
+      uri: '123456',
       name: 'High Ground - Playlist track 2',
       artist: 'Obi-wan Kenobi',
       album: "It's over Anakin",
@@ -42,6 +49,12 @@ function App() {
     setPlaylistName(newName);
   };
 
+  const savePlaylist = () => {
+    const trackURIs = playlistTracks.map((track) => track.uri);
+
+    // TODO: pass playlist name and track to spotify linked method
+  };
+
   return (
     <div>
       <h1>
@@ -56,6 +69,7 @@ function App() {
             onNameChange={updatePlaylistName}
             tracks={playlistTracks}
             onRemove={removeTrack}
+            onSave={savePlaylist}
           />
         </div>
       </div>
