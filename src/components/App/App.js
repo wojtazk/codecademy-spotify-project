@@ -38,6 +38,10 @@ function App() {
     );
   };
 
+  const updatePlaylistName = (newName) => {
+    setPlaylistName(newName);
+  };
+
   return (
     <div>
       <h1>
@@ -49,6 +53,7 @@ function App() {
           <SearchResults searchResults={searchResults} onAdd={addTrack} />
           <Playlist
             name={playlistName}
+            onNameChange={updatePlaylistName}
             tracks={playlistTracks}
             onRemove={removeTrack}
           />
