@@ -1,37 +1,33 @@
 import { useState } from 'react';
+
 import './App.css';
+
 import { SearchBar } from '../SearchBar/SearchBar';
 import { SearchResults } from '../SearchResults/SearchResults';
 import { Playlist } from '../Playlist/Playlist';
 
+import { Spotify } from '../../util/Spotify';
+
 function App() {
   const [searchResults, setSearchResults] = useState([
-    { id: 1, name: 'song 1', artist: 'artist 1', album: 'album 1' },
+    {
+      id: 1,
+      name: 'song 1',
+      artist: 'artist 1',
+      album: 'album 1',
+      uri: 'spotify:track:2DxaLqCKfChhN9xUhN8R0A',
+    },
     {
       id: 2,
       name: 'High Ground',
       artist: 'Obi-wan Kenobi',
       album: "It's over Anakin",
+      uri: 'spotify:track:5eNnuKhQMh9jieIYzWutgR',
     },
   ]);
 
   const [playlistName, setPlaylistName] = useState('');
-  const [playlistTracks, setPlaylistTracks] = useState([
-    {
-      id: 12,
-      uri: '12',
-      name: 'Playlist track 1',
-      artist: 'artist 1',
-      album: 'album 1',
-    },
-    {
-      id: 24,
-      uri: '123456',
-      name: 'High Ground - Playlist track 2',
-      artist: 'Obi-wan Kenobi',
-      album: "It's over Anakin",
-    },
-  ]);
+  const [playlistTracks, setPlaylistTracks] = useState([]);
 
   const addTrack = (track) => {
     const isNew = !playlistTracks.some((tr) => tr.id === track.id);
@@ -40,8 +36,8 @@ function App() {
   };
 
   const removeTrack = (track) => {
-    setPlaylistTracks((oldTracks) =>
-      oldTracks.filter((tr) => tr.id !== track.id)
+    setPlaylistTracks((prevTracks) =>
+      prevTracks.filter((tr) => tr.id !== track.id)
     );
   };
 
@@ -55,10 +51,15 @@ function App() {
     // TODO: pass playlist name and track to spotify linked method
   };
 
-  const search = (search) => {
-    console.log(search);
+  const search = (term) => {
+    if (!term) return;
 
-    // TODO: hook up to spotify api
+    console.log('query: ', term);
+
+    Spotify.search(term).then((tracks) => {
+      console.log(tracks);
+      setSearchResults(tracks);
+    });
   };
 
   return (

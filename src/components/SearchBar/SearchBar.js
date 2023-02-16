@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Spotify } from '../../util/Spotify';
 import './SearchBar.css';
 
 export const SearchBar = ({ onSearch }) => {
@@ -14,7 +15,11 @@ export const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <form className="SearchBar" onSubmit={search}>
+    <form
+      className="SearchBar"
+      onSubmit={search}
+      onFocus={() => Spotify.getAccessToken()}
+    >
       <input
         placeholder="Enter A Song, Album, or Artist"
         value={term}
