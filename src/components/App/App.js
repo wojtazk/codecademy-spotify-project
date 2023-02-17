@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './App.css';
 
@@ -9,6 +9,14 @@ import { Playlist } from '../Playlist/Playlist';
 import { Spotify } from '../../util/Spotify';
 
 function App() {
+  useEffect(() => {
+    Spotify.getAccessToken();
+
+    const reload = () => window.location.reload();
+    window.addEventListener('hashchange', reload);
+
+    return window.removeEventListener('hashchange', reload);
+  }, []);
   const [searchResults, setSearchResults] = useState([
     {
       id: 1,
@@ -26,7 +34,7 @@ function App() {
     },
   ]);
 
-  const [playlistName, setPlaylistName] = useState('');
+  const [playlistName, setPlaylistName] = useState('New Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
   const addTrack = (track) => {
@@ -48,16 +56,16 @@ function App() {
   const savePlaylist = () => {
     const trackURIs = playlistTracks.map((track) => track.uri);
 
-    // TODO: pass playlist name and track to spotify linked method
+    Spotify.savePLaylist(playlistName, trackURIs);
   };
 
   const search = (term) => {
     if (!term) return;
 
-    console.log('query: ', term);
+    console.log('search query: ', term);
 
     Spotify.search(term).then((tracks) => {
-      console.log(tracks);
+      console.log('search results: ', tracks);
       setSearchResults(tracks);
     });
   };

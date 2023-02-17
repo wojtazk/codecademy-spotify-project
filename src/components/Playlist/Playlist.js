@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './Playlist.css';
 import { TrackList } from '../TrackList/TrackList';
 
 export const Playlist = ({ name, onNameChange, tracks, onRemove, onSave }) => {
+  const inputRef = useRef();
+
   const handleNameChange = (event) => {
     onNameChange(event.target.value);
   };
@@ -10,8 +12,10 @@ export const Playlist = ({ name, onNameChange, tracks, onRemove, onSave }) => {
   return (
     <div className="Playlist">
       <input
-        defaultValue={name || 'New Playlist'}
+        ref={inputRef}
+        defaultValue={name}
         onChange={handleNameChange}
+        onFocus={() => inputRef.current.select()}
       />
       <TrackList tracks={tracks} onRemove={onRemove} isRemoval={true} />
       <button className="Playlist-save" onClick={onSave}>
