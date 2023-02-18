@@ -1,6 +1,6 @@
 const spotifyAPI = 'https://api.spotify.com/v1/';
 const clientID = '3a4b48d239654bd4b8ad3bc7240d19c4';
-const redirectURI = encodeURIComponent(window.location.href); // I have no idea what the domain name is going to be, so... it is what it is
+const redirectURI = encodeURIComponent(window.location.href); // I have no idea what the domain name is going to be, so... it is what it is ¯\_(ツ)_/¯
 
 let userAccessToken = null;
 
@@ -47,6 +47,7 @@ export const Spotify = {
             name: track.name,
             artist: track.artists[0].name,
             album: track.album.name,
+            previewUrl: track.preview_url,
             uri: track.uri,
           };
         });

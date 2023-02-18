@@ -23,6 +23,8 @@ function App() {
       name: 'song 1',
       artist: 'artist 1',
       album: 'album 1',
+      previewUrl:
+        'https://p.scdn.co/mp3-preview/c4d4c991e41a1404185cd3a73f307578f152fa40?cid=3a4b48d239654bd4b8ad3bc7240d19c4',
       uri: 'spotify:track:2DxaLqCKfChhN9xUhN8R0A',
     },
     {
@@ -30,6 +32,8 @@ function App() {
       name: 'High Ground',
       artist: 'Obi-wan Kenobi',
       album: "It's over Anakin",
+      previewUrl:
+        'https://p.scdn.co/mp3-preview/c4d4c991e41a1404185cd3a73f307578f152fa40?cid=3a4b48d239654bd4b8ad3bc7240d19c4',
       uri: 'spotify:track:5eNnuKhQMh9jieIYzWutgR',
     },
   ]);

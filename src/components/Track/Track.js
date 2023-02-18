@@ -15,6 +15,11 @@ export const Track = ({ track, isRemoval, onAdd, onRemove }) => {
       <div className="Track-information">
         <h3>{track.name}</h3>
         <p>{`${track.artist} | ${track.album}`}</p>
+
+        <audio controls>
+          <source src={track.previewUrl} type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
       </div>
       <button
         className="Track-action"
