@@ -9,14 +9,15 @@ import { Playlist } from '../Playlist/Playlist';
 import { Spotify } from '../../util/Spotify';
 
 function App() {
-  useEffect(() => {
-    Spotify.getAccessToken();
+  // useEffect(() => {
+  //   // Spotify.getAccessToken();
 
-    const reload = () => window.location.reload();
-    window.addEventListener('hashchange', reload);
+  //   const reload = () => window.location.reload();
+  //   window.addEventListener('hashchange', reload);
 
-    return window.removeEventListener('hashchange', reload);
-  }, []);
+  //   return window.removeEventListener('hashchange', reload);
+  // }, []);
+
   const [searchResults, setSearchResults] = useState([
     {
       id: 1,
