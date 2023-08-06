@@ -10,6 +10,7 @@ export const Spotify = {
     //
 
     if (!window.location.hash) {
+      window.history.pushState(null, null, '/');
       window.location.replace(
         `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`
       );
