@@ -1,3 +1,5 @@
+<div align="center">
+
 # Codecademy Jammming app
 
 ![GitHub](https://img.shields.io/github/license/wojtazk/codecademy-spotify-project)
@@ -11,8 +13,11 @@
 
 ![image](https://user-images.githubusercontent.com/48928433/219614802-e0717d58-f108-49c1-94db-00c132cc79e3.png)
 ---
+</div>
+
 view the project at [codecademy](https://www.codecademy.com/projects/practice/jammming-prj)
 
-visit the [live demo](https://wojtazk-jammming.vercel.app)
 
+visit the [live demo](https://wojtazk-jammming.vercel.app)*
 
+*The demo will not work as expected due to the limitations with the spotify development mode
